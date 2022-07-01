@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import ToDo from '../src/components/toDo'
+import ToDo from '../src/components/ToDo'
 import Waves from '../src/components/Waves'
 
 const Home: NextPage = () => {

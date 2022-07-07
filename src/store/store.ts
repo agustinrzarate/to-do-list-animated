@@ -7,6 +7,29 @@ export interface Itask {
     state: boolean;
 }
 
+const initialState = [
+  {
+    id: uuidv4(),
+    task: 'React hooks',
+    state: false
+  },
+  {
+    id: uuidv4(),
+    task: 'Esto es una task',
+    state: true
+  },
+  {
+    id: uuidv4(),
+    task: 'Otro',
+    state: false
+  },
+  {
+    id: uuidv4(),
+    task: 'Zustand',
+    state: false
+  }
+]
+
 export interface ItoDoState {
   tasks: Itask[];
   addTask: (task: string) => void;
@@ -15,9 +38,9 @@ export interface ItoDoState {
 }
 
 export const useTasks = create<ItoDoState>((set) => ({
-  tasks: [],
+  tasks: initialState,
   addTask: (task: string) =>
-    set((state: any) => ({ tasks: [...state.tasks, { task, id: uuidv4(), state: false }] })),
+    set((state: any) => ({ tasks: [{ task, id: uuidv4(), state: false }, ...state.tasks] })),
   removeTask: (id: string) => set((state) => ({
     tasks: state.tasks.filter((task: Itask) => task.id !== id)
   })),

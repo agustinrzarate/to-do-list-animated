@@ -27,12 +27,12 @@ export default function Task ({ task, state, id, index } : ItaskProps) {
   }
 
   return (
-      <motion.li className="task-list-item" variants={variants} initial='hidden' animate='visible' exit='hidden' layoutId={id} custom={{ delay: (index + 1) * 0.2 }}>
+      <motion.li className="task-list-item" variants={variants} initial='hidden' animate='visible' exit='hidden' layoutId={id} custom={{ delay: (index + 1) * 0.1 }}>
         <label className="task-list-item-label">
           <input type="checkbox" checked={state} onChange={() => completedTask(id)}/>
           <span>{task}</span>
         </label>
-        <span className="delete-btn" title="Delete Task" onClick={() => deleteTask(id)}></span>
+        <motion.span className="delete-btn" title="Delete Task" onClick={() => deleteTask(id)} whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.7 }}></motion.span>
       </motion.li>
   )
 }

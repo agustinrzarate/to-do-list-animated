@@ -40,16 +40,16 @@ export interface ItoDoState {
 export const useTasks = create<ItoDoState>((set) => ({
   tasks: initialState,
   addTask: (task: string) =>
-    set((state: any) => ({ tasks: [{ task, id: uuidv4(), state: false }, ...state.tasks] })),
+    set((state) => ({ tasks: [{ task, id: uuidv4(), state: false }, ...state.tasks] })),
   removeTask: (id: string) => set((state) => ({
     tasks: state.tasks.filter((task: Itask) => task.id !== id)
   })),
+  reorderTasks: (newTasks: Itask[]) => set({ tasks: newTasks }),
   completedTask: (id: string) => set((state: any) => ({
     tasks: state.tasks.map((task: Itask) => {
       if (task.id === id) {
         return {
-          id: task.id,
-          task: task.task,
+          ...task,
           state: !task.state
         }
       }

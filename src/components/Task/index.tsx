@@ -9,8 +9,8 @@ export interface ItaskProps {
 }
 
 export default function Task ({ task, state, id, index } : ItaskProps) {
-  const completedTask = useTasks((state: any) => state.completedTask)
-  const deleteTask = useTasks((state: any) => state.removeTask)
+  const completedTask = useTasks((state) => state.completedTask)
+  const deleteTask = useTasks((state) => state.removeTask)
 
   const variants = {
     hidden: {

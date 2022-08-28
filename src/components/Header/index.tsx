@@ -6,7 +6,7 @@ export default function Header () {
   const [newTask, setNewTask] = useState<string>('')
   const addTask = useTasks((state: any) => state.addTask)
   const handleClick = () => {
-    addTask(newTask)
+    newTask && addTask(newTask)
     setNewTask('')
   }
   const keyEnterPress = (event: React.KeyboardEvent<HTMLInputElement>) => {

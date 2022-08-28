@@ -1,15 +1,19 @@
-import { AnimatePresence, Reorder } from 'framer-motion'
+import { Reorder } from 'framer-motion'
 import { Itask, useTasks } from '../../store/store'
 import Task from '../Task'
 
 export default function Tasks () {
   const tasksSelector = useTasks((state) => state.tasks)
-  const reorderTasks = useTasks((state: any) => state.reorderTasks)
+  const reorderTasks = useTasks((state) => state.reorderTasks)
   return (
-   <Reorder.Group as='ul'className="task-list" axis="y" values={tasksSelector} onReorder={(e) => { reorderTasks(tasksSelector); console.log(e) }}>
-     <AnimatePresence>
-      {tasksSelector.map((task: Itask, index: number) => <Task {...task} key={task.id} index={index}/>)}
-     </AnimatePresence>
-    </Reorder.Group>
+    <div className="task-list">
+      <Reorder.Group as='ul' axis="y" values={tasksSelector} onReorder={reorderTasks}>
+      {tasksSelector.map((task: Itask, index: any) =>
+      <Reorder.Item key={task.id} value={task} id={index}>
+        <Task {...task} index={index}/>
+      </Reorder.Item>
+      )}
+      </Reorder.Group>
+    </div>
   )
 }

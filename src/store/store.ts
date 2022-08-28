@@ -35,6 +35,7 @@ export interface ItoDoState {
   addTask: (task: string) => void;
   removeTask: (id: string) => void;
   completedTask: (id: string) => void;
+  reorderTasks: (newTasks: Itask[]) => void;
 }
 
 export const useTasks = create<ItoDoState>((set) => ({
